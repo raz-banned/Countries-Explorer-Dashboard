@@ -1,0 +1,9 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  padding: 8px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+}
