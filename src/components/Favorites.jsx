@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Favorites.module.css";
-import { useFavorites } from "../hooks/useFavorites";
 import FavoriteCard from "./FavoriteCard";
+import { useFavorites } from "../hooks/useFavorites";
 
 function Favorites() {
   const [isShown, setIsShown] = useState(false);

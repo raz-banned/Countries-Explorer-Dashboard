@@ -17,7 +17,9 @@ function CountryCard({ country }) {
           onClick={() =>
             dispatch({
               type: "REMOVE_FAVORITE",
-              payload: { cca3: country?.cca3 },
+              payload: {
+                cca3: country?.cca3,
+              },
             })
           }
         >
@@ -25,7 +27,12 @@ function CountryCard({ country }) {
         </button>
       ) : (
         <button
-          onClick={() => dispatch({ type: "ADD_FAVORITE", payload: country })}
+          onClick={() =>
+            dispatch({
+              type: "ADD_FAVORITE",
+              payload: { country },
+            })
+          }
         >
           В избранные
         </button>

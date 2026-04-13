@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Header from "../Header";
 import Main from "../Main";
-import { FavoritesProvider } from "../context/FavoritesContext";
+import { FavoritesProvider } from "../context/FavoritesProvider";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
