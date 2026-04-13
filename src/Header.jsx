@@ -2,7 +2,7 @@ import "./Header.css";
 import SearchBar from "./components/SearchBar";
 import Dropdown from "./components/Dropdown";
 
-function Header({ searchQuery, setSearchQuery }) {
+function Header({ searchQuery, onSearch, onSelect }) {
   return (
     <header>
       <div>
@@ -12,11 +12,8 @@ function Header({ searchQuery, setSearchQuery }) {
           детальная страница каждой страны.
         </p>
         <div className="controls">
-          <SearchBar
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-          />
-          <Dropdown />
+          <SearchBar searchQuery={searchQuery} onSearch={onSearch} />
+          <Dropdown onSelect={onSelect} />
         </div>
       </div>
     </header>

@@ -1,9 +1,9 @@
 import CountryList from "./components/CountryList";
 
-function Main({ searchQuery }) {
+function Main({ searchQuery, activeRegion }) {
   return (
     <main>
-      <CountryList searchQuery={searchQuery} />
+      <CountryList searchQuery={searchQuery} activeRegion={activeRegion} />
     </main>
   );
 }

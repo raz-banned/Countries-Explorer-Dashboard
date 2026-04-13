@@ -5,9 +5,9 @@ import { useDebounce } from "../hooks/useDebounce";
 import CountryCard from "./CountryCard";
 import "./Countries.css";
 
-function CountryList({ searchQuery }) {
+function CountryList({ searchQuery, activeRegion }) {
   const { data, error, loading } = useFetch(
-    "https://restcountries.com/v3.1/all?fields=name,capital,currencies,cca3,region",
+    "https://restcountries.com/v3.1/all?fields=name,capital,currencies,cca3,region,flag,population",
   );
   const debouncedValue = useDebounce(searchQuery, 500);
 
@@ -16,13 +16,18 @@ function CountryList({ searchQuery }) {
     <Error type={error.type} message={error.message} />
   );
 
+  const sortByRegion = activeRegion
+    ? data.filter((country) =>
+        country.region.toLowerCase().includes(activeRegion.toLowerCase()),
+      )
+    : data;
   const countries = debouncedValue
     ? data.filter((country) =>
         country.name.common
           .toLowerCase()
           .includes(debouncedValue.toLowerCase()),
       )
-    : data;
+    : sortByRegion;
 
   return (
     hasError ||
@@ -30,7 +35,7 @@ function CountryList({ searchQuery }) {
       <div>
         <ul className="countries-container">
           {countries.slice(0, 35).map((country) => (
-            <CountryCard country={country} />
+            <CountryCard key={country?.cca3} country={country} />
           ))}
         </ul>
       </div>

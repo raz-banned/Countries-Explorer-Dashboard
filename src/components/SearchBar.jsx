@@ -1,11 +1,11 @@
 import "./Search.css";
 
-function SearchBar({ searchQuery, setSearchQuery }) {
+function SearchBar({ searchQuery, onSearch }) {
   return (
     <div className="search">
       <input
         type="text"
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={(e) => onSearch(e.target.value)}
         value={searchQuery}
       />
     </div>

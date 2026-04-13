@@ -5,11 +5,16 @@ import { useState } from "react";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeRegion, setActiveRegion] = useState("");
 
   return (
     <>
-      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <Main searchQuery={searchQuery} />
+      <Header
+        searchQuery={searchQuery}
+        onSearch={setSearchQuery}
+        onSelect={setActiveRegion}
+      />
+      <Main searchQuery={searchQuery} activeRegion={activeRegion} />
     </>
   );
 }

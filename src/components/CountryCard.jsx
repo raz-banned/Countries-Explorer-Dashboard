@@ -1,8 +1,8 @@
 import "./Countries.css";
 
-function CountryCard({ country }) {
+function CountryCard({ key, country }) {
   return (
-    <li className="country-card" key={country?.cca3}>
+    <li className="country-card" key={key}>
       <span>{country.name?.common}</span>
     </li>
   );
