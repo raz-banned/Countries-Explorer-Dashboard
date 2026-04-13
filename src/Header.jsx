@@ -1,19 +1,21 @@
-import "./Header.css";
+import styles from "./Header.module.css";
 import SearchBar from "./components/SearchBar";
 import Dropdown from "./components/Dropdown";
+import Favorites from "./components/Favorites";
 
 function Header({ searchQuery, onSearch, onSelect }) {
   return (
-    <header>
+    <header className={styles.header}>
       <div>
-        <h1>🌍 Countries Explorer Dashboard</h1>
+        <h1 className={styles.title}>🌍 Countries Explorer Dashboard</h1>
         <p>
           Приложение для исследования стран мира — поиск, фильтрация, избранное,
           детальная страница каждой страны.
         </p>
-        <div className="controls">
+        <div className={styles.controls}>
           <SearchBar searchQuery={searchQuery} onSearch={onSearch} />
           <Dropdown onSelect={onSelect} />
+          <Favorites />
         </div>
       </div>
     </header>

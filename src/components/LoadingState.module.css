@@ -16,7 +16,7 @@
   }
 }
 
-.loading-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@
   height: 100vh;
 }
 
-.loading-container span {
+.text {
   margin: 20px 0px;
   font-size: 1.2em;
   color: #333;

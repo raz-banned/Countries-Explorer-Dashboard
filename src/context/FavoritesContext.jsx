@@ -1,15 +1,15 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
-const FavoritesContext = createContext(null);
+export const FavoritesContext = createContext(null);
 
 const favoritesReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_COUNTRY":
+    case "ADD_FAVORITE":
       return {
         ...state,
         countries: [...state.countries, action.payload],
       };
-    case "REMOVE_COUNTRY":
+    case "REMOVE_FAVORITE":
       return {
         ...state,
         countries: state.countries.filter(
@@ -30,11 +30,3 @@ export function FavoritesProvider({ children }) {
     <FavoritesContext value={{ state, dispatch }}>{children}</FavoritesContext>
   );
 }
-
-export const useFavorites = () => {
-  const context = useContext(FavoritesContext);
-  if (!context) {
-    throw new Error("useFavorites must be used inside FavoritesProvider");
-  }
-  return context;
-};

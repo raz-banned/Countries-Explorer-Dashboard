@@ -3,7 +3,7 @@ import Loading from "./LoadingState";
 import Error from "./ErrorMessage";
 import { useDebounce } from "../hooks/useDebounce";
 import CountryCard from "./CountryCard";
-import "./Countries.css";
+import styles from "./CountryList.module.css";
 
 function CountryList({ searchQuery, activeRegion }) {
   const { data, error, loading } = useFetch(
@@ -34,13 +34,9 @@ function CountryList({ searchQuery, activeRegion }) {
     hasError ||
     isLoading || (
       <div>
-        <ul className="countries-container">
+        <ul className={styles.list}>
           {countries.slice(0, 35).map((country) => (
-            <CountryCard
-              key={country?.cca3}
-              id={country?.cca3}
-              country={country}
-            />
+            <CountryCard key={country?.cca3} country={country} />
           ))}
         </ul>
       </div>

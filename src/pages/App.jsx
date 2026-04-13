@@ -1,7 +1,8 @@
 import "./App.css";
+import { useState } from "react";
 import Header from "../Header";
 import Main from "../Main";
-import { useState } from "react";
+import { FavoritesProvider } from "../context/FavoritesContext";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -9,12 +10,14 @@ function App() {
 
   return (
     <>
-      <Header
-        searchQuery={searchQuery}
-        onSearch={setSearchQuery}
-        onSelect={setActiveRegion}
-      />
-      <Main searchQuery={searchQuery} activeRegion={activeRegion} />
+      <FavoritesProvider>
+        <Header
+          searchQuery={searchQuery}
+          onSearch={setSearchQuery}
+          onSelect={setActiveRegion}
+        />
+        <Main searchQuery={searchQuery} activeRegion={activeRegion} />
+      </FavoritesProvider>
     </>
   );
 }

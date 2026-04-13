@@ -1,4 +1,4 @@
-import "./Region.css";
+import styles from "./Dropdown.module.css";
 
 function Dropdown({ onSelect }) {
   const handleSwitch = (region) => onSelect(region);
@@ -6,7 +6,7 @@ function Dropdown({ onSelect }) {
   return (
     <select
       name="region"
-      className="dropdown"
+      className={styles.dropdown}
       onChange={(e) => handleSwitch(e.target.value)}
     >
       <option value="default">Default</option>

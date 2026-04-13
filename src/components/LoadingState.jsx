@@ -1,10 +1,10 @@
-import "./Loading.css";
+import styles from "./LoadingState.module.css";
 
 function Loading() {
   return (
-    <div className="loading-container">
-      <span>Загрузка...</span>
-      <div className="loader"></div>
+    <div className={styles.container}>
+      <span className={styles.text}>Загрузка...</span>
+      <div className={styles.loader}></div>
     </div>
   );
 }
