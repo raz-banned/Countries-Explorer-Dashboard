@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <Main />
+      <Main searchQuery={searchQuery} />
     </>
   );
 }
