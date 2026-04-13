@@ -16,13 +16,14 @@ function CountryList({ searchQuery, activeRegion }) {
     <Error type={error.type} message={error.message} />
   );
 
-  const sortByRegion = activeRegion
-    ? data.filter((country) =>
-        country.region.toLowerCase().includes(activeRegion.toLowerCase()),
-      )
-    : data;
+  const sortByRegion =
+    activeRegion && activeRegion !== "default"
+      ? data.filter((country) =>
+          country.region.toLowerCase().includes(activeRegion.toLowerCase()),
+        )
+      : data;
   const countries = debouncedValue
-    ? data.filter((country) =>
+    ? sortByRegion.filter((country) =>
         country.name.common
           .toLowerCase()
           .includes(debouncedValue.toLowerCase()),
@@ -35,7 +36,11 @@ function CountryList({ searchQuery, activeRegion }) {
       <div>
         <ul className="countries-container">
           {countries.slice(0, 35).map((country) => (
-            <CountryCard key={country?.cca3} country={country} />
+            <CountryCard
+              key={country?.cca3}
+              id={country?.cca3}
+              country={country}
+            />
           ))}
         </ul>
       </div>
