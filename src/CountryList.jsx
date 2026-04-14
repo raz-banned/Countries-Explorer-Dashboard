@@ -1,15 +1,19 @@
-import { useFetch } from "../hooks/useFetch";
-import Loading from "./LoadingState";
-import Error from "./ErrorMessage";
-import { useDebounce } from "../hooks/useDebounce";
+import { useFetch } from "./hooks/useFetch";
+import Loading from "./components/LoadingState";
+import Error from "./components/ErrorMessage";
+import { useDebounce } from "./hooks/useDebounce";
 import CountryCard from "./CountryCard";
 import styles from "./CountryList.module.css";
 import { useMemo } from "react";
+import { allCountries } from "./api/countries";
+import { useActiveRegion } from "./hooks/useActiveRegion";
+import { useSearch } from "./hooks/useSearch";
 
-function CountryList({ searchQuery, activeRegion }) {
-  const { data, error, loading } = useFetch(
-    "https://restcountries.com/v3.1/all?fields=name,capital,currencies,cca3,region,flag,population",
-  );
+function CountryList() {
+  const { searchQuery } = useSearch();
+  const { activeRegion } = useActiveRegion();
+
+  const { data, error, loading } = useFetch(allCountries());
   const debouncedValue = useDebounce(searchQuery, 500);
 
   const isLoading = !!loading && <Loading />;

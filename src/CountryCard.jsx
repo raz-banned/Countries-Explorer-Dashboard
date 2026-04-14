@@ -1,5 +1,5 @@
 import styles from "./CountryCard.module.css";
-import { useFavorites } from "../hooks/useFavorites";
+import { useFavorites } from "./hooks/useFavorites";
 
 function CountryCard({ country }) {
   const { state, dispatch } = useFavorites();

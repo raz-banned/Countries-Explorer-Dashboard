@@ -1,9 +1,14 @@
 import styles from "./Header.module.css";
-import SearchBar from "./components/SearchBar";
-import Dropdown from "./components/Dropdown";
-import Favorites from "./components/Favorites";
+import SearchBar from "./SearchBar";
+import Dropdown from "./Dropdown";
+import Favorites from "./Favorites";
+import { useSearch } from "./hooks/useSearch";
+import { useActiveRegion } from "./hooks/useActiveRegion";
 
-function Header({ searchQuery, onSearch, onSelect }) {
+function Header() {
+  const { searchQuery, setSearchQuery } = useSearch();
+  const { setActiveRegion } = useActiveRegion();
+
   return (
     <header className={styles.header}>
       <div>
@@ -12,11 +17,11 @@ function Header({ searchQuery, onSearch, onSelect }) {
           Приложение для исследования стран мира — поиск, фильтрация, избранное,
           детальная страница каждой страны.
         </p>
-        <div className={styles.controls}>
-          <SearchBar searchQuery={searchQuery} onSearch={onSearch} />
-          <Dropdown onSelect={onSelect} />
-          <Favorites />
-        </div>
+      </div>
+      <div className={styles.controls}>
+        <SearchBar searchQuery={searchQuery} onSearch={setSearchQuery} />
+        <Dropdown onSelect={setActiveRegion} />
+        <Favorites />
       </div>
     </header>
   );
