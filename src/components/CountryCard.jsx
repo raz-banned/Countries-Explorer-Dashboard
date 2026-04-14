@@ -6,10 +6,10 @@ function CountryCard({ country }) {
 
   return (
     <li className={styles.item}>
-      <span>Название: {country.name?.common}</span>
-      <span>Флаг: {country?.flag}</span>
-      <span>Население: {country?.population}</span>
-      <span>Регион: {country?.region}</span>
+      <span>{country.name?.common}</span>
+      <span>{country?.flag}</span>
+      <span>{country?.population}</span>
+      <span>{country?.region}</span>
       {state.countries.find(
         (currentCountry) => currentCountry?.cca3 === country?.cca3,
       ) ? (

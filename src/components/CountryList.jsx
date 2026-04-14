@@ -4,6 +4,7 @@ import Error from "./ErrorMessage";
 import { useDebounce } from "../hooks/useDebounce";
 import CountryCard from "./CountryCard";
 import styles from "./CountryList.module.css";
+import { useMemo } from "react";
 
 function CountryList({ searchQuery, activeRegion }) {
   const { data, error, loading } = useFetch(
@@ -16,19 +17,26 @@ function CountryList({ searchQuery, activeRegion }) {
     <Error type={error.type} message={error.message} />
   );
 
-  const sortByRegion =
-    activeRegion && activeRegion !== "default"
-      ? data.filter((country) =>
-          country.region.toLowerCase().includes(activeRegion.toLowerCase()),
-        )
-      : data;
-  const countries = debouncedValue
-    ? sortByRegion.filter((country) =>
-        country.name.common
-          .toLowerCase()
-          .includes(debouncedValue.toLowerCase()),
-      )
-    : sortByRegion;
+  const sortByRegion = useMemo(
+    () =>
+      activeRegion && activeRegion !== "default"
+        ? data.filter((country) =>
+            country.region.toLowerCase().includes(activeRegion.toLowerCase()),
+          )
+        : data,
+    [activeRegion, data],
+  );
+  const countries = useMemo(
+    () =>
+      debouncedValue
+        ? sortByRegion.filter((country) =>
+            country.name.common
+              .toLowerCase()
+              .includes(debouncedValue.toLowerCase()),
+          )
+        : sortByRegion,
+    [debouncedValue, sortByRegion],
+  );
 
   return (
     hasError ||
