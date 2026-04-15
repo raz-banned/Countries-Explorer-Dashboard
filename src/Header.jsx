@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
 import SearchBar from "./SearchBar";
 import Dropdown from "./Dropdown";
-import Favorites from "./Favorites";
+import Favorites from "./FavoritesLink";
 import { useSearch } from "./hooks/useSearch";
 import { useActiveRegion } from "./hooks/useActiveRegion";
 

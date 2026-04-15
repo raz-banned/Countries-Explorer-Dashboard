@@ -55,3 +55,10 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
+
+.detailsLink {
+  color: #97148a;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 8px;
+}

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import Header from "../Header";
-import ActiveRegionContext from "../context/ActiveRegionContext";
-import SearchContext from "../context/SearchContext";
+import { Outlet } from "react-router";
+import ActiveRegionContext from "./context/ActiveRegionContext";
+import SearchContext from "./context/SearchContext";
+import Header from "./Header";
 
-function Layout({ children }) {
+function Layout() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeRegion, setActiveRegion] = useState("");
 
@@ -12,7 +13,9 @@ function Layout({ children }) {
       <SearchContext value={{ searchQuery, setSearchQuery }}>
         <ActiveRegionContext value={{ activeRegion, setActiveRegion }}>
           <Header />
-          <main>{children}</main>
+          <main>
+            <Outlet />
+          </main>
         </ActiveRegionContext>
       </SearchContext>
     </>

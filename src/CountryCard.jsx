@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import styles from "./CountryCard.module.css";
 import { useFavorites } from "./hooks/useFavorites";
 
@@ -7,9 +8,7 @@ function CountryCard({ country }) {
   return (
     <li className={styles.item}>
       <span>{country.name?.common}</span>
-      <span>{country?.flag}</span>
-      <span>{country?.population}</span>
-      <span>{country?.region}</span>
+
       {state.countries.find(
         (currentCountry) => currentCountry?.cca3 === country?.cca3,
       ) ? (
@@ -37,6 +36,9 @@ function CountryCard({ country }) {
           В избранные
         </button>
       )}
+      <Link to={`/country/${country?.cca3}`} className={styles.detailsLink}>
+        Подробнее
+      </Link>
     </li>
   );
 }
