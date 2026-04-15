@@ -4,7 +4,7 @@ import CountryList from "../CountryList";
 function HomePage() {
   return (
     <>
-      <CountryList />;
+      <CountryList />
     </>
   );
 }

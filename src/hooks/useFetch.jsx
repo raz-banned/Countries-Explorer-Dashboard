@@ -32,7 +32,12 @@ export function useFetch(url) {
         if (!isMounted) return;
         const data = await res.json();
         console.log("data successfully fetched");
-        setValue((prev) => ({ ...prev, data, loading: false }));
+        const countries = Array.isArray(data) ? data : [data];
+        setValue((prev) => ({
+          ...prev,
+          data: countries,
+          loading: false,
+        }));
       } catch (e) {
         if (!isMounted) return;
         setValue((prev) => ({
