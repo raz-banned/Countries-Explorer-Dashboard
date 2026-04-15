@@ -22,6 +22,9 @@ const Favorites = memo(function Favorites() {
           ))}
         </ul>
       )}
+      <span className={styles.textLength}>
+        Количество: {state.countries.length}
+      </span>
     </div>
   );
 });
