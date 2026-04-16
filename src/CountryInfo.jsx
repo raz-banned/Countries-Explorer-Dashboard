@@ -16,11 +16,11 @@ function CountryInfo({ code }) {
 
   if (!country) return <p>Страница не найдена</p>;
 
-  const currency = country?.currencies
-    ? Object.values(country?.currencies)[0]
+  const currency = country.currencies
+    ? Object.values(country.currencies)[0]
     : null;
-  const languages = country?.languages
-    ? Object.values(country?.languages).join(", ")
+  const languages = country.languages
+    ? Object.values(country.languages).join(", ")
     : "Не указано";
 
   return (
@@ -34,7 +34,7 @@ function CountryInfo({ code }) {
       <li>Население: {country.population?.toLocaleString()}</li>
       <li>
         Валюта:{" "}
-        {currency ? `${currency.name}``${currency.symbol}` : "Нет данных"}
+        {currency ? `${currency.name} (${currency.symbol})` : "Нет данных"}
       </li>
       <li>Язык: {languages}</li>
       <li>Столица: {country.capital?.join(", ") || "Нет столицы"}</li>
