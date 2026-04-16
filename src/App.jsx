@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router";
 import { ErrorBoundary } from "react-error-boundary";
-import "./App.css";
 import { FavoritesProvider } from "./context/FavoritesProvider";
 import Layout from "./Layout";
 import HomePage from "./pages/HomePage";

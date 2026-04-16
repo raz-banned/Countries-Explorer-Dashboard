@@ -3,7 +3,6 @@ import Loading from "./components/LoadingState";
 import Error from "./components/ErrorMessage";
 import { useDebounce } from "./hooks/useDebounce";
 import CountryCard from "./CountryCard";
-import styles from "./CountryList.module.css";
 import { useMemo, useState } from "react";
 import { allCountries } from "./api/countries";
 import { useActiveRegion } from "./hooks/useActiveRegion";
@@ -56,10 +55,13 @@ function CountryList() {
     hasError ||
     isLoading || (
       <div>
-        <button className={styles.sortBtn} onClick={handleSort}>
+        <button
+          className="py-2 px-4 bg-indigo-800 text-white border-0 rounded-1 cursor-pointer h-10 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed focus:outline-0 shadow-xs focus:shadow-blue-700 active:bg-blue-800 active:inset-shadow-sm active:shadow-black"
+          onClick={handleSort}
+        >
           Сортировать по населению
         </button>
-        <ul className={styles.list}>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4 bg-amber-50 p-4 rounded-lg shadow-sm">
           {countries.slice(0, 35).map((country) => (
             <CountryCard key={country?.cca3} country={country} />
           ))}

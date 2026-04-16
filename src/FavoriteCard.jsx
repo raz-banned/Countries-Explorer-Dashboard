@@ -1,7 +1,9 @@
-import styles from "./FavoriteCard.module.css";
-
 function FavoriteCard({ country }) {
-  return <li className={styles.item}>{country?.name?.common}</li>;
+  return (
+    <li className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-xs p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      {country?.name?.common}
+    </li>
+  );
 }
 
 export default FavoriteCard;

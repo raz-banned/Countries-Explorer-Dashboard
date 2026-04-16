@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import styles from "./CountryInfo.module.css";
 import { countryByCode } from "./api/countries";
 import { useFetch } from "./hooks/useFetch";
 import Loading from "./components/LoadingState";
@@ -24,21 +23,27 @@ function CountryInfo({ code }) {
     : "Не указано";
 
   return (
-    <ul className={styles.container}>
-      <Link to="/" className={styles.backLink}>
-        Вернутся
-      </Link>
-      <li>Название: {country.name?.common}</li>
-      <li>Флаг: {country.flag}</li>
-      <li>Регион: {country.region}</li>
-      <li>Население: {country.population?.toLocaleString()}</li>
-      <li>
-        Валюта:{" "}
-        {currency ? `${currency.name} (${currency.symbol})` : "Нет данных"}
-      </li>
-      <li>Язык: {languages}</li>
-      <li>Столица: {country.capital?.join(", ") || "Нет столицы"}</li>
-    </ul>
+    <div className="p-4 border rounded-lg shadow-sm bg-gray-50 dark:bg-gray-800">
+      <ul className="list-disc pl-5">
+        <Link to="/" className="text-blue-500 hover:underline">
+          Вернутся
+        </Link>
+        <li className="my-2">Название: {country.name?.common}</li>
+        <li className="my-2">Флаг: {country.flag}</li>
+        <li className="my-2">Регион: {country.region}</li>
+        <li className="my-2">
+          Население: {country.population?.toLocaleString()}
+        </li>
+        <li className="my-2">
+          Валюта:{" "}
+          {currency ? `${currency.name} (${currency.symbol})` : "Нет данных"}
+        </li>
+        <li className="my-2">Язык: {languages}</li>
+        <li className="my-2">
+          Столица: {country.capital?.join(", ") || "Нет столицы"}
+        </li>
+      </ul>
+    </div>
   );
 }
 
