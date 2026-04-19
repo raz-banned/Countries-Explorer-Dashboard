@@ -1,4 +1,14 @@
 import { Link } from "react-router";
+import { Button } from "./components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+} from "./components/ui/card";
+import { Separator } from "./components/ui/separator";
 import { countryByCode } from "./api/countries";
 import { useFetch } from "./hooks/useFetch";
 import Loading from "./components/LoadingState";
@@ -23,26 +33,29 @@ function CountryInfo({ code }) {
     : "Не указано";
 
   return (
-    <div className="p-4 border rounded-lg shadow-sm bg-gray-50 dark:bg-gray-800">
-      <ul className="list-disc pl-5">
-        <Link to="/" className="text-blue-500 hover:underline">
-          Вернутся
-        </Link>
-        <li className="my-2">Название: {country.name?.common}</li>
-        <li className="my-2">Флаг: {country.flag}</li>
-        <li className="my-2">Регион: {country.region}</li>
-        <li className="my-2">
-          Население: {country.population?.toLocaleString()}
-        </li>
-        <li className="my-2">
-          Валюта:{" "}
-          {currency ? `${currency.name} (${currency.symbol})` : "Нет данных"}
-        </li>
-        <li className="my-2">Язык: {languages}</li>
-        <li className="my-2">
-          Столица: {country.capital?.join(", ") || "Нет столицы"}
-        </li>
-      </ul>
+    <div className="container p-4 flex justify-center">
+      <Card className="w-full md:w-1/2 lg:w-1/3 mx-auto mt-8">
+        <CardHeader className="flex flex-col items-center gap-4">
+          <Button asChild variant="link">
+            <Link to="/">Вернутся</Link>
+          </Button>
+          <CardTitle>Название: {country.name?.common}</CardTitle>
+          <CardDescription>Флаг: {country.flag}</CardDescription>
+        </CardHeader>
+        <Separator />
+        <CardContent className="grid gap-3 grid-cols-2 place-items-center list-none">
+          <li>Регион: {country.region}</li>
+          <li>Население: {country.population?.toLocaleString()}</li>
+          <li>
+            Валюта:
+            {currency ? ` ${currency.name} (${currency.symbol})` : "Нет данных"}
+          </li>
+          <li>Язык: {languages}</li>
+        </CardContent>
+        <CardFooter className="flex justify-center list-none">
+          <li>Столица: {country.capital?.join(", ") || "Нет столицы"}</li>
+        </CardFooter>
+      </Card>
     </div>
   );
 }

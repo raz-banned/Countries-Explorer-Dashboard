@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { Link } from "react-router";
 import { useFavorites } from "./hooks/useFavorites";
+import { Button } from "./components/ui/button";
 
 const FavoritesLink = memo(function Favorites() {
   const [onFavorites, setOnFavorites] = useState(false);
@@ -9,23 +10,27 @@ const FavoritesLink = memo(function Favorites() {
   return (
     <div className="flex items-center gap-4">
       {onFavorites ? (
-        <Link
-          to="/"
-          className="text-blue-500 hover:text-blue-700  "
-          onClick={() => setOnFavorites((prev) => !prev)}
-        >
-          Обратно
-        </Link>
+        <Button asChild variant="link">
+          <Link
+            to="/"
+            className="text-blue-500 hover:text-blue-700  "
+            onClick={() => setOnFavorites((prev) => !prev)}
+          >
+            Обратно
+          </Link>
+        </Button>
       ) : (
-        <Link
-          to="/favorites"
-          className="text-blue-500 hover:text-blue-700  "
-          onClick={() => setOnFavorites((prev) => !prev)}
-        >
-          Перейти к любимым
-        </Link>
+        <Button asChild variant="link">
+          <Link
+            to="/favorites"
+            className="text-blue-500 hover:text-blue-700  "
+            onClick={() => setOnFavorites((prev) => !prev)}
+          >
+            Перейти к любимым
+          </Link>
+        </Button>
       )}
-      <span className="text-gray-700 dark:text-gray-300">
+      <span className="text-neutral-500 dark:text-gray-300 text-sm">
         Количество в избранных: {state.countries.length}
       </span>
     </div>
