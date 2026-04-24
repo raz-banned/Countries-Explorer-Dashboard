@@ -6,11 +6,13 @@ import type { Country } from './types/country';
 function CountryCard({ country }: { country: Country }) {
   const { countries, dispatch } = useFavorites();
 
+  console.log(countries);
+
   return (
     <li className="flex flex-col items-start p-4 border rounded-lg shadow-sm gap-1 bg-violet-100">
       <span className="font-bold text-gray-900">{country.name?.common}</span>
       {countries.find(
-        (currentCountry) => currentCountry?.cca3 === country?.cca3
+        (currentCountry) => currentCountry.cca3 === country.cca3
       ) ? (
         <Button
           variant="destructive"
@@ -18,7 +20,7 @@ function CountryCard({ country }: { country: Country }) {
             dispatch({
               type: 'REMOVE_FAVORITE',
               payload: {
-                cca3: country?.cca3,
+                cca3: country.cca3,
               },
             })
           }

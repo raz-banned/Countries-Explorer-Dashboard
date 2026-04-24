@@ -1,5 +1,5 @@
-import { Input } from "./components/ui/input";
-import { useSearch } from "./hooks/useSearch";
+import { Input } from './components/ui/input';
+import { useSearch } from './hooks/useSearch';
 
 function SearchBar() {
   const { searchQuery, setSearchQuery } = useSearch();

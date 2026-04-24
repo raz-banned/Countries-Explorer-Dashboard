@@ -34,7 +34,7 @@ function CountryInfo({ code }: { code: string }) {
     : 'Не указано';
 
   return (
-    <div className="container p-4 flex justify-center">
+    <div className="p-4 flex justify-center">
       <Card className="w-full md:w-1/2 lg:w-1/3 mx-auto mt-8">
         <CardHeader className="flex flex-col items-center gap-4">
           <Button asChild variant="link">

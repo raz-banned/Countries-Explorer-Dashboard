@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import FavoritesPage from './pages/FavoritesPage';
 import CountryPage from './pages/CountryPage';
 import Fallback from './Fallback';
-import { Layout } from 'lucide-react';
+import Layout from './Layout';
 
 function App() {
   return (

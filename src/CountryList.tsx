@@ -55,10 +55,10 @@ function CountryList() {
     hasError ||
     isLoading || (
       <div>
-        <Button size="lg" onClick={handleSort}>
+        <Button size="lg" onClick={handleSort} className="mx-4 mt-2">
           Сортировать по населению
         </Button>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4 bg-violet-100 p-4 rounded-lg shadow-sm">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 bg-violet-100 p-4 rounded-lg shadow-sm">
           {countries.slice(0, 35).map((country) => (
             <CountryCard key={country.cca3} country={country} />
           ))}
