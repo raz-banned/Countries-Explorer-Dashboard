@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+
+interface InitialValue<T> {
+  data: T[];
+  loading: boolean;
+  error: { active: boolean; type: string; message: string };
+}
 
 const initialValue = {
   data: [],
   loading: true,
-  error: { active: false, type: "", message: "" },
+  error: { active: false, type: '', message: '' },
 };
 
-export function useFetch(url) {
-  const [value, setValue] = useState(initialValue);
+export function useFetch<T>(url: string) {
+  const [value, setValue] = useState<InitialValue<T>>(initialValue);
 
   useEffect(() => {
     let isMounted = true;
@@ -19,11 +25,11 @@ export function useFetch(url) {
         if (!res.ok) {
           if (res.status >= 400 && res.status < 500) {
             throw new Error(
-              `${res.status}. Ошибка клиента, проверьте url или данные. `,
+              `${res.status}. Ошибка клиента, проверьте url или данные. `
             );
           } else if (res.status >= 500) {
             throw new Error(
-              `${res.status}. Ошибка сервера, попробуйте подождать и вернутся позже. `,
+              `${res.status}. Ошибка сервера, попробуйте подождать и вернутся позже. `
             );
           } else {
             throw new Error(`Ошибка: ${res.status}`);
@@ -31,7 +37,7 @@ export function useFetch(url) {
         }
         if (!isMounted) return;
         const data = await res.json();
-        console.log("data successfully fetched");
+        console.log('data successfully fetched');
         const countries = Array.isArray(data) ? data : [data];
         setValue((prev) => ({
           ...prev,
@@ -40,16 +46,21 @@ export function useFetch(url) {
         }));
       } catch (e) {
         if (!isMounted) return;
-        setValue((prev) => ({
-          ...prev,
-          loading: false,
-          error: { active: true, type: e.name, message: e.message },
-        }));
+        if (e instanceof Error) {
+          setValue((prev) => ({
+            ...prev,
+            loading: false,
+            error: { active: true, type: e.name, message: e.message },
+          }));
+        }
       }
     };
     fetchCountries();
 
-    return () => (isMounted = false);
+    return () => {
+      isMounted = false;
+    };
   }, [url]);
+
   return value;
 }

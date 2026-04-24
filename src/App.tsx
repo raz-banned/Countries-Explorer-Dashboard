@@ -1,13 +1,11 @@
-import { Route, Routes } from "react-router";
-import { ErrorBoundary } from "react-error-boundary";
-import { FavoritesProvider } from "./context/FavoritesProvider";
-import Layout from "./Layout";
-import HomePage from "./pages/HomePage";
-import FavoritesPage from "./pages/FavoritesPage";
-import CountryPage from "./pages/CountryPage";
-import Fallback from "./Fallback";
-import { DropdownMenuBasic } from "./DropdownMenuBasic";
-import ErrorMessage from "./components/ErrorMessage";
+import { Route, Routes } from 'react-router';
+import { ErrorBoundary } from 'react-error-boundary';
+import { FavoritesProvider } from './context/FavoritesProvider';
+import HomePage from './pages/HomePage';
+import FavoritesPage from './pages/FavoritesPage';
+import CountryPage from './pages/CountryPage';
+import Fallback from './Fallback';
+import { Layout } from 'lucide-react';
 
 function App() {
   return (

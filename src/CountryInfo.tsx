@@ -1,5 +1,5 @@
-import { Link } from "react-router";
-import { Button } from "./components/ui/button";
+import { Link } from 'react-router';
+import { Button } from './components/ui/button';
 import {
   Card,
   CardContent,
@@ -7,15 +7,16 @@ import {
   CardTitle,
   CardDescription,
   CardFooter,
-} from "./components/ui/card";
-import { Separator } from "./components/ui/separator";
-import { countryByCode } from "./api/countries";
-import { useFetch } from "./hooks/useFetch";
-import Loading from "./components/LoadingState";
-import ErrorMessage from "./components/ErrorMessage";
+} from './components/ui/card';
+import { Separator } from './components/ui/separator';
+import { countryByCode } from './api/countries';
+import { useFetch } from './hooks/useFetch';
+import Loading from './components/LoadingState';
+import ErrorMessage from './components/ErrorMessage';
+import type { Country } from './types/country';
 
-function CountryInfo({ code }) {
-  const { data, loading, error } = useFetch(countryByCode(code));
+function CountryInfo({ code }: { code: string }) {
+  const { data, loading, error } = useFetch<Country>(countryByCode(code));
 
   if (error.active)
     return <ErrorMessage type={error.type} message={error.message} />;
@@ -29,8 +30,8 @@ function CountryInfo({ code }) {
     ? Object.values(country.currencies)[0]
     : null;
   const languages = country.languages
-    ? Object.values(country.languages).join(", ")
-    : "Не указано";
+    ? Object.values(country.languages).join(', ')
+    : 'Не указано';
 
   return (
     <div className="container p-4 flex justify-center">
@@ -44,16 +45,16 @@ function CountryInfo({ code }) {
         </CardHeader>
         <Separator />
         <CardContent className="grid gap-3 grid-cols-2 place-items-center list-none">
-          <li>Регион: {country.region}</li>
-          <li>Население: {country.population?.toLocaleString()}</li>
-          <li>
+          <p>Регион: {country.region}</p>
+          <p>Население: {country.population?.toLocaleString()}</p>
+          <p>
             Валюта:
-            {currency ? ` ${currency.name} (${currency.symbol})` : "Нет данных"}
-          </li>
-          <li>Язык: {languages}</li>
+            {currency ? ` ${currency.name} (${currency.symbol})` : 'Нет данных'}
+          </p>
+          <p>Язык: {languages}</p>
         </CardContent>
         <CardFooter className="flex justify-center list-none">
-          <li>Столица: {country.capital?.join(", ") || "Нет столицы"}</li>
+          <p>Столица: {country.capital?.join(', ') || 'Нет столицы'}</p>
         </CardFooter>
       </Card>
     </div>

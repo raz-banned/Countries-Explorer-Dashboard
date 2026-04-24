@@ -6,8 +6,8 @@ import {
   SelectItem,
   SelectLabel,
   SelectGroup,
-} from "./components/ui/select";
-import { useActiveRegion } from "./hooks/useActiveRegion";
+} from './components/ui/select';
+import { useActiveRegion } from './hooks/useActiveRegion';
 
 function Dropdown() {
   const { activeRegion, setActiveRegion } = useActiveRegion();

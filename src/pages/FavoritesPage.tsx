@@ -1,4 +1,4 @@
-import FavoritesList from "../FavoritesList";
+import FavoritesList from '@/FavoritesList';
 
 function FavoritesPage() {
   return (

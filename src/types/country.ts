@@ -20,7 +20,7 @@ export interface Country {
   >;
   languages: Record<string, string>;
   cca3: string;
-  capital: string[];
+  capital?: string[];
   region: string;
   population: number;
 }

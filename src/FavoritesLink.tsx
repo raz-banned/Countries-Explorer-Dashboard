@@ -1,11 +1,11 @@
-import { memo, useState } from "react";
-import { Link } from "react-router";
-import { useFavorites } from "./hooks/useFavorites";
-import { Button } from "./components/ui/button";
+import { memo, useState } from 'react';
+import { Link } from 'react-router';
+import { useFavorites } from './hooks/useFavorites';
+import { Button } from './components/ui/button';
 
 const FavoritesLink = memo(function Favorites() {
   const [onFavorites, setOnFavorites] = useState(false);
-  const { state } = useFavorites();
+  const { countries } = useFavorites();
 
   return (
     <div className="flex items-center gap-4">
@@ -31,7 +31,7 @@ const FavoritesLink = memo(function Favorites() {
         </Button>
       )}
       <span className="text-neutral-500 dark:text-gray-300 text-sm">
-        Количество в избранных: {state.countries.length}
+        Количество в избранных: {countries.length}
       </span>
     </div>
   );

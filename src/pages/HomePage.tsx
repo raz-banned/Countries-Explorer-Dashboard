@@ -1,4 +1,4 @@
-import CountryList from "../CountryList";
+import CountryList from '@/CountryList';
 
 function HomePage() {
   return (

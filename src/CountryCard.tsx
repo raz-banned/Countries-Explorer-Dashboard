@@ -1,21 +1,22 @@
-import { Link } from "react-router";
-import { Button } from "./components/ui/button";
-import { useFavorites } from "./hooks/useFavorites";
+import { Link } from 'react-router';
+import { Button } from './components/ui/button';
+import { useFavorites } from './hooks/useFavorites';
+import type { Country } from './types/country';
 
-function CountryCard({ country }) {
-  const { state, dispatch } = useFavorites();
+function CountryCard({ country }: { country: Country }) {
+  const { countries, dispatch } = useFavorites();
 
   return (
     <li className="flex flex-col items-start p-4 border rounded-lg shadow-sm gap-1 bg-violet-100">
       <span className="font-bold text-gray-900">{country.name?.common}</span>
-      {state.countries.find(
-        (currentCountry) => currentCountry?.cca3 === country?.cca3,
+      {countries.find(
+        (currentCountry) => currentCountry?.cca3 === country?.cca3
       ) ? (
         <Button
           variant="destructive"
           onClick={() =>
             dispatch({
-              type: "REMOVE_FAVORITE",
+              type: 'REMOVE_FAVORITE',
               payload: {
                 cca3: country?.cca3,
               },
@@ -30,8 +31,8 @@ function CountryCard({ country }) {
           className="bg-violet-200"
           onClick={() =>
             dispatch({
-              type: "ADD_FAVORITE",
-              payload: { country },
+              type: 'ADD_FAVORITE',
+              payload: country,
             })
           }
         >
